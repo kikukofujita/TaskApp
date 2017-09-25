@@ -26,7 +26,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="JRT-WS-Hbd" detailTextLabel="PSf-On-AiI" style="IBUITableViewCellStyleSubtitle" id="DXU-tq-Fv0">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="JRT-WS-Hbd" detailTextLabel="PSf-On-AiI" style="IBUITableViewCellStyleSubtitle" id="DXU-tq-Fv0" customClass="customTableViewCell" customModule="taskapp2" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DXU-tq-Fv0" id="8LS-LX-H64">
@@ -34,21 +34,33 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JRT-WS-Hbd">
-                                                    <rect key="frame" x="15" y="5" width="33.5" height="20.5"/>
+                                                    <rect key="frame" x="15" y="3" width="39" height="24"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PSf-On-AiI">
-                                                    <rect key="frame" x="15" y="25.5" width="44" height="14.5"/>
+                                                    <rect key="frame" x="15" y="27" width="44" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Category" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PDg-BM-Eao">
+                                                    <rect key="frame" x="249" y="19" width="109" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="celCategory" destination="PDg-BM-Eao" id="Gx1-Wm-y23"/>
+                                            <outlet property="cellSubtitle" destination="PSf-On-AiI" id="0Lm-2X-raX"/>
+                                            <outlet property="cellTitle" destination="JRT-WS-Hbd" id="xOE-yb-oWZ"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -75,7 +87,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="154" y="32"/>
+            <point key="canvasLocation" x="152.80000000000001" y="31.934032983508249"/>
         </scene>
         <!--Input View Controller-->
         <scene sceneID="Agp-gs-2pv">
@@ -90,35 +102,35 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タイトル" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VBB-GT-Lbh">
-                                <rect key="frame" x="16" y="74" width="343" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="16" y="74" width="343" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="内容" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vdy-ef-T1g">
-                                <rect key="frame" x="16" y="145" width="343" height="21"/>
+                                <rect key="frame" x="16" y="214.5" width="343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g7M-7d-5ot">
-                                <rect key="frame" x="0.0" y="105" width="375" height="30"/>
+                                <rect key="frame" x="0.0" y="103.5" width="375" height="30"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="egX-O5-wqG">
-                                <rect key="frame" x="16" y="176" width="343" height="120"/>
+                                <rect key="frame" x="16" y="245.5" width="343" height="120"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="mjh-qR-qqr"/>
                                 </constraints>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="XAj-bJ-6l9">
-                                <rect key="frame" x="0.0" y="306" width="375" height="120"/>
+                                <rect key="frame" x="0.0" y="375.5" width="375" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="NgP-1Q-jqy"/>
                                 </constraints>
@@ -126,29 +138,48 @@
                                     <!--2017-09-22 16:33:48 +0000-->
                                 </date>
                             </datePicker>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="カテゴリ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bOw-jH-Imt">
+                                <rect key="frame" x="16" y="143.5" width="343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8wm-gX-fbe">
+                                <rect key="frame" x="0.0" y="174.5" width="375" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Vdy-ef-T1g" firstAttribute="top" secondItem="8wm-gX-fbe" secondAttribute="bottom" constant="10" id="5ft-p9-KoG"/>
                             <constraint firstItem="egX-O5-wqG" firstAttribute="leading" secondItem="Cm2-HD-meT" secondAttribute="leadingMargin" id="B9V-bW-yg3"/>
+                            <constraint firstItem="bOw-jH-Imt" firstAttribute="top" secondItem="g7M-7d-5ot" secondAttribute="bottom" constant="10" id="HmJ-Bd-hjE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="egX-O5-wqG" secondAttribute="trailing" id="IKn-7b-8qX"/>
                             <constraint firstItem="VBB-GT-Lbh" firstAttribute="top" secondItem="TMe-4t-bDE" secondAttribute="bottom" constant="10" id="INl-xX-P3D"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bOw-jH-Imt" secondAttribute="trailing" id="IXw-cU-YEL"/>
                             <constraint firstItem="egX-O5-wqG" firstAttribute="top" secondItem="Vdy-ef-T1g" secondAttribute="bottom" constant="10" id="J9a-s5-yhb"/>
+                            <constraint firstItem="8wm-gX-fbe" firstAttribute="leading" secondItem="Cm2-HD-meT" secondAttribute="leading" id="KZs-Ym-TdS"/>
+                            <constraint firstAttribute="trailing" secondItem="8wm-gX-fbe" secondAttribute="trailing" id="L0N-rG-dzG"/>
+                            <constraint firstItem="8wm-gX-fbe" firstAttribute="top" secondItem="bOw-jH-Imt" secondAttribute="bottom" constant="10" id="MEc-x9-dPg"/>
                             <constraint firstItem="XAj-bJ-6l9" firstAttribute="top" secondItem="egX-O5-wqG" secondAttribute="bottom" constant="10" id="OUh-jE-vOX"/>
                             <constraint firstItem="g7M-7d-5ot" firstAttribute="leading" secondItem="Cm2-HD-meT" secondAttribute="leading" id="PaH-Wk-8XD"/>
                             <constraint firstAttribute="trailing" secondItem="g7M-7d-5ot" secondAttribute="trailing" id="TNz-Nb-nEe"/>
                             <constraint firstItem="VBB-GT-Lbh" firstAttribute="leading" secondItem="Cm2-HD-meT" secondAttribute="leadingMargin" id="ZLm-Kv-bd0"/>
                             <constraint firstItem="Vdy-ef-T1g" firstAttribute="leading" secondItem="Cm2-HD-meT" secondAttribute="leadingMargin" id="cUq-I0-Ur4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="VBB-GT-Lbh" secondAttribute="trailing" id="cre-E6-BVR"/>
+                            <constraint firstItem="bOw-jH-Imt" firstAttribute="leading" secondItem="Cm2-HD-meT" secondAttribute="leadingMargin" id="hDY-Vr-Roz"/>
                             <constraint firstItem="g7M-7d-5ot" firstAttribute="top" secondItem="VBB-GT-Lbh" secondAttribute="bottom" constant="10" id="hop-xo-2wc"/>
                             <constraint firstAttribute="trailing" secondItem="XAj-bJ-6l9" secondAttribute="trailing" id="i3Y-hx-A0o"/>
                             <constraint firstItem="XAj-bJ-6l9" firstAttribute="leading" secondItem="Cm2-HD-meT" secondAttribute="leading" id="k0d-su-quy"/>
                             <constraint firstAttribute="trailing" secondItem="XAj-bJ-6l9" secondAttribute="trailing" id="kHs-Ri-MsC"/>
                             <constraint firstItem="XAj-bJ-6l9" firstAttribute="leading" secondItem="Cm2-HD-meT" secondAttribute="leading" id="tJh-IC-BZ9"/>
-                            <constraint firstItem="Vdy-ef-T1g" firstAttribute="top" secondItem="g7M-7d-5ot" secondAttribute="bottom" constant="10" id="xi1-Co-RD0"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Vdy-ef-T1g" secondAttribute="trailing" id="zUU-xM-TNe"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="categoryTextField" destination="8wm-gX-fbe" id="TAB-7Z-kbx"/>
                         <outlet property="contentsTextView" destination="egX-O5-wqG" id="uWn-9o-pXM"/>
                         <outlet property="datePicker" destination="XAj-bJ-6l9" id="QDi-lZ-aBr"/>
                         <outlet property="titleTextField" destination="g7M-7d-5ot" id="kTN-0i-cp7"/>

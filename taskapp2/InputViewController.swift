@@ -15,6 +15,7 @@ class InputViewController: UIViewController {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var contentsTextView: UITextView!
     @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var categoryTextField: UITextField!
     
     var task: Task!
     let realm = try! Realm()
@@ -29,8 +30,9 @@ class InputViewController: UIViewController {
         titleTextField.text = task.title
         contentsTextView.text = task.contents
         datePicker.date = task.date as Date
-        print("背景をタップ")
-        print(task.title)
+        categoryTextField.text = task.category
+        
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -42,11 +44,11 @@ class InputViewController: UIViewController {
         try! realm.write {
             self.task.title = self.titleTextField.text!
             self.task.contents = self.contentsTextView.text
+            self.task.category = self.categoryTextField.text!
             self.task.date = self.datePicker.date as NSDate
             self.realm.add(self.task, update: true)
         }
-        print("realm write")
-        print(task.title)
+
         
         setNotification(task: task)
         

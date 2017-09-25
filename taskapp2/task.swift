@@ -7,7 +7,6 @@
 //
 
 import Foundation
-
 import RealmSwift
 
 class Task: Object {
@@ -16,6 +15,9 @@ class Task: Object {
     
     // タイトル
     dynamic var title = ""
+    
+    // カテゴリ
+    dynamic var category = ""
     
     // 内容
     dynamic var contents = ""

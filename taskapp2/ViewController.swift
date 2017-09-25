@@ -45,21 +45,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // 各セルの内容を返すメソッド
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // 再利用可能なcell　を得る
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath as IndexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! customTableViewCell
+        
         
         // Cellに値を設定する
         let task = taskArray[indexPath.row]
-        cell.textLabel?.text = task.title
-        print("cellに値を設定")
-        print(task.title)
-        print("taskArray")
-        print(taskArray)
+        cell.cellTitle.text = task.title
+        cell.celCategory.text = task.category
         
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm"
         
         let dateString:String = formatter.string(from: task.date as Date)
-        cell.detailTextLabel?.text = dateString
+        cell.cellSubtitle.text = dateString
         
         return cell
     }
