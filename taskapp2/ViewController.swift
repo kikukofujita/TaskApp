@@ -10,9 +10,10 @@ import UIKit
 import RealmSwift
 import UserNotifications
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var testSearchBar: UISearchBar!
     
     // Realmインスタンスを取得する
     let realm = try! Realm()
@@ -22,6 +23,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // 以降内容とアップデートするとリスト内は自動的に更新される
     var taskArray = try! Realm().objects(Task.self).sorted(byKeyPath: "date", ascending: false)
     
+    // 検索ボタン押下時の呼び出しメソッド
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        let testSearchText: String = testSearchBar!.text!
+        
+        if testSearchText != "" {
+            let predicate = NSPredicate(format: "category = %@", _:testSearchText)
+            taskArray = realm.objects(Task.self).filter(predicate)
+            
+            
+        print("-------end")
+        print(taskArray)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +44,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        // デリゲート先を自分に設定
+        testSearchBar.delegate = self
+        
+        // 何も入力されていなくてもReturnキーを押せるようにする
+        testSearchBar.enablesReturnKeyAutomatically = false
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,7 +62,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // データの数（＝セルの数）を返すメソッド
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return taskArray.count
+
     }
+    
+    
     
     // 各セルの内容を返すメソッド
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
