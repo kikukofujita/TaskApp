@@ -31,12 +31,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if testSearchText != "" {
             let predicate = NSPredicate(format: "category = %@", _:testSearchText)
             taskArray = realm.objects(Task.self).filter(predicate)
+            tableView.reloadData()
             
-            
-        print("-------end")
-        print(taskArray)
         }
     }
+    
+    // キャンセルボタンを押された時
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        taskArray = try! Realm().objects(Task.self).sorted(byKeyPath: "date", ascending: false)
+            tableView.reloadData()
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()

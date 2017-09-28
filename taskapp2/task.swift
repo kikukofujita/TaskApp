@@ -26,16 +26,12 @@ class Task: Object {
     dynamic var date = NSDate()
 
     /**
-    id　をプラマリーキーとして設定
+    id　をプライマリーキーとして設定
     */
  
     override static func primaryKey() -> String? {
         return "id"
     }
-
-
-    
-    
 }
 
 
