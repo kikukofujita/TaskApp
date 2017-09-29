@@ -17,6 +17,8 @@ class InputViewController: UIViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var categoryTextField: UITextField!
     
+
+
     var task: Task!
     let realm = try! Realm()
     
@@ -24,7 +26,8 @@ class InputViewController: UIViewController {
         super.viewDidLoad()
         
         // 背景をタップしたらdismissKeyboardメソッドを呼ぶように設定
-        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(disimissKeyboard))
+        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target:
+            self, action: #selector(disimissKeyboard))
         self.view.addGestureRecognizer(tapGesture)
         
         titleTextField.text = task.title
@@ -89,6 +92,9 @@ class InputViewController: UIViewController {
     func disimissKeyboard() {
         view.endEditing(true)   // キーボードを閉じる
     }
+    
+    // -------------------------------------------
+    // 各セルを選択した時に実行されるメソッド
 
     /*
     // MARK: - Navigation
