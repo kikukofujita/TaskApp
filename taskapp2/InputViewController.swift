@@ -10,20 +10,42 @@ import UserNotifications
 import UIKit
 import RealmSwift
 
-class InputViewController: UIViewController {
-
+class InputViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+    // 20170930 UIPickerViewDataSource, UIPickerViewDelegate追加　⬆︎
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var contentsTextView: UITextView!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var categoryTextField: UITextField!
-    
-
+    // 20170930
+    @IBOutlet weak var dataPicker: UIPickerView!
+    var dataList = ["001","002","003","004"]
+    var pickerView: UIPickerView = UIPickerView()
+    /*
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseidentifier: "Cell")
+        return cell
+    }
+    func tableView(tabaleView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    // up
+*/
 
     var task: Task!
     let realm = try! Realm()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // <20170930
+        dataPicker.dataSource = self
+        dataPicker.delegate = self
+        // はじめに表示する項目
+        dataPicker.selectedRow(inComponent: 0)
+        
+        pickerView.showsSelectionIndicator = true
+        self.categoryTextField.inputView = pickerView
+        // 20170930>
         
         // 背景をタップしたらdismissKeyboardメソッドを呼ぶように設定
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target:
@@ -34,14 +56,47 @@ class InputViewController: UIViewController {
         contentsTextView.text = task.contents
         datePicker.date = task.date as Date
         categoryTextField.text = task.category
-        
+    }
 
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowInComponent component: Int) -> Int {
+        return dataList.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return dataList[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.categoryTextField.text = dataList[row]
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // 20170930 Pickerviewの列を１とする
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ namePickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return dataList.count
+    }
+    // 表示する文字列を指定
+    // Pickeriewに表示する配列の要素数を設定
+    func picherView(namePickerview: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+        return dataList[row]
+    }
+    // ラベル表示
+    func pickerView(namePickerview: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        categoryTextField.text = dataList[row]
+    }
+    // 20170930 up
     
     override func viewWillDisappear(_ animated: Bool) {
         try! realm.write {

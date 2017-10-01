@@ -7,10 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F30B1E561F7E6A7900EA3C26 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30B1E551F7E6A7900EA3C26 /* List.swift */; };
-		F30B1E581F7E6D6600EA3C26 /* listTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30B1E571F7E6D6600EA3C26 /* listTableViewCell.swift */; };
+		F30B1E5C1F7FE3B900EA3C26 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30B1E5B1F7FE3B900EA3C26 /* Category.swift */; };
 		F3449D331F7929EF0092FD8D /* customTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3449D321F7929EF0092FD8D /* customTableViewCell.swift */; };
-		F3449D3D1F7D48670092FD8D /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3449D3C1F7D48670092FD8D /* TableViewController.swift */; };
 		F398D6311F7578420080919A /* task.swift in Sources */ = {isa = PBXBuildFile; fileRef = F398D6301F7578420080919A /* task.swift */; };
 		F3A965A81F75618400E68DB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A965A71F75618400E68DB8 /* AppDelegate.swift */; };
 		F3A965AA1F75618400E68DB8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A965A91F75618400E68DB8 /* ViewController.swift */; };
@@ -25,10 +23,8 @@
 		2AEB1F0E838B200D56D2E83E /* Pods-taskapp2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-taskapp2.release.xcconfig"; path = "Pods/Target Support Files/Pods-taskapp2/Pods-taskapp2.release.xcconfig"; sourceTree = "<group>"; };
 		5A742D32EAF6E85DA7A1E275 /* Pods-taskapp2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-taskapp2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-taskapp2/Pods-taskapp2.debug.xcconfig"; sourceTree = "<group>"; };
 		6F9AEEAE1E1925305B01B684 /* Pods_taskapp2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_taskapp2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F30B1E551F7E6A7900EA3C26 /* List.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
-		F30B1E571F7E6D6600EA3C26 /* listTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = listTableViewCell.swift; sourceTree = "<group>"; };
+		F30B1E5B1F7FE3B900EA3C26 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		F3449D321F7929EF0092FD8D /* customTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customTableViewCell.swift; sourceTree = "<group>"; };
-		F3449D3C1F7D48670092FD8D /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		F398D6301F7578420080919A /* task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = task.swift; sourceTree = "<group>"; };
 		F3A965A41F75618400E68DB8 /* taskapp2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = taskapp2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3A965A71F75618400E68DB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -84,11 +80,9 @@
 				F3A965A71F75618400E68DB8 /* AppDelegate.swift */,
 				F3A965A91F75618400E68DB8 /* ViewController.swift */,
 				F3A965AB1F75618400E68DB8 /* Main.storyboard */,
-				F30B1E571F7E6D6600EA3C26 /* listTableViewCell.swift */,
-				F3449D3C1F7D48670092FD8D /* TableViewController.swift */,
 				F3449D321F7929EF0092FD8D /* customTableViewCell.swift */,
 				F398D6301F7578420080919A /* task.swift */,
-				F30B1E551F7E6A7900EA3C26 /* List.swift */,
+				F30B1E5B1F7FE3B900EA3C26 /* Category.swift */,
 				F3A965B91F756E6400E68DB8 /* InputViewController.swift */,
 				F3A965AE1F75618400E68DB8 /* Assets.xcassets */,
 				F3A965B01F75618400E68DB8 /* LaunchScreen.storyboard */,
@@ -231,13 +225,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F398D6311F7578420080919A /* task.swift in Sources */,
-				F30B1E581F7E6D6600EA3C26 /* listTableViewCell.swift in Sources */,
-				F3449D3D1F7D48670092FD8D /* TableViewController.swift in Sources */,
-				F30B1E561F7E6A7900EA3C26 /* List.swift in Sources */,
 				F3A965BA1F756E6400E68DB8 /* InputViewController.swift in Sources */,
 				F3449D331F7929EF0092FD8D /* customTableViewCell.swift in Sources */,
 				F3A965AA1F75618400E68DB8 /* ViewController.swift in Sources */,
 				F3A965A81F75618400E68DB8 /* AppDelegate.swift in Sources */,
+				F30B1E5C1F7FE3B900EA3C26 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
