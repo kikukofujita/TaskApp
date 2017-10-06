@@ -11,41 +11,46 @@ import UIKit
 import RealmSwift
 
 class InputViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
-    // 20170930 UIPickerViewDataSource, UIPickerViewDelegate追加　⬆︎
+
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var contentsTextView: UITextView!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var categoryTextField: UITextField!
-    // 20170930
-    @IBOutlet weak var dataPicker: UIPickerView!
-    var dataList = ["001","002","003","004"]
-    var pickerView: UIPickerView = UIPickerView()
-    /*
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseidentifier: "Cell")
-        return cell
-    }
-    func tableView(tabaleView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    // up
-*/
 
+
+    // 20170930
+
+//    var dataList = ["999","001","002","003","004"]
     var task: Task!
+
+    let category = Category()
+    
     let realm = try! Realm()
     
+    var categoryArray = try! Realm().objects(Category.self).sorted(byKeyPath: "classCategory", ascending: false)
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // <20170930
-        dataPicker.dataSource = self
-        dataPicker.delegate = self
-        // はじめに表示する項目
-        dataPicker.selectedRow(inComponent: 0)
-        
+        let pickerView = UIPickerView()
+        pickerView.dataSource = self
+        pickerView.delegate = self
+        categoryTextField.inputView = pickerView
         pickerView.showsSelectionIndicator = true
-        self.categoryTextField.inputView = pickerView
-        // 20170930>
+        
+        // カテゴリのindexを求めて、pickerに反映する
+        var categoryIndex = 0
+        if let category = task.category {
+            categoryIndex = categoryArray.index(of: category) ?? 0
+            
+            
+        }
+        pickerView.selectRow(categoryIndex, inComponent: 0, animated: false)
+        
+        
+        _ = UIToolbar(frame: CGRectMake(0, 0, 0, 35))
+        
         
         // 背景をタップしたらdismissKeyboardメソッドを呼ぶように設定
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target:
@@ -55,30 +60,51 @@ class InputViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         titleTextField.text = task.title
         contentsTextView.text = task.contents
         datePicker.date = task.date as Date
-        categoryTextField.text = task.category
+        categoryTextField.text = task.category?.classCategory
+        
     }
+    
+    func dataList() -> [String] {
+        var list = [String]()
+        
+        categoryArray.forEach { (category: Category) in
+            list.append(category.classCategory)
+        }
+        return list
+    }
+    
+    
+/*    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // segueから遷移先のcategoryViewControllerを取得
+        let cateroryViewController: cateroryViewController = segue.destination as! cateroryViewController
+        
+        // 遷移先のCategoryViewControllerで宣言しているxに値を代入して渡す
+        cateroryViewController.x = "a"
+    }   */
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowInComponent component: Int) -> Int {
-        return dataList.count
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return dataList().count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return dataList[row]
+        return dataList()[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.categoryTextField.text = dataList[row]
+        self.categoryTextField.text = dataList()[row]
+        categoryTextField.endEditing(true)
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+/*
     // 20170930 Pickerviewの列を１とする
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
@@ -97,17 +123,26 @@ class InputViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         categoryTextField.text = dataList[row]
     }
     // 20170930 up
-    
+*/
     override func viewWillDisappear(_ animated: Bool) {
+        
         try! realm.write {
             self.task.title = self.titleTextField.text!
             self.task.contents = self.contentsTextView.text
-            self.task.category = self.categoryTextField.text!
             self.task.date = self.datePicker.date as NSDate
+            
+            // pickerViewで選択されているcategoryをtask.categoryに設定する
+            if let pickerView = categoryTextField.inputView as! UIPickerView! {
+                if categoryArray.count > 0 {
+                    let categoryIndex = pickerView.selectedRow(inComponent: 0)
+                    self.task.category = categoryArray[categoryIndex]
+                }
+            }
             self.realm.add(self.task, update: true)
+            
         }
-
         
+        // Categoryをself.task.category
         setNotification(task: task)
         
         super.viewWillDisappear(animated)
@@ -146,6 +181,10 @@ class InputViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     
     func disimissKeyboard() {
         view.endEditing(true)   // キーボードを閉じる
+    }
+    
+    func CGRectMake(_ X: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) -> CGRect {
+        return CGRect(x: X, y: y, width: width, height: height)
     }
     
     // -------------------------------------------
