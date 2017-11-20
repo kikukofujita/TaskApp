@@ -44,7 +44,6 @@ class cateroryViewController: UIViewController {
 
 
     }
-    
 
     /*
     // MARK: - Navigation
